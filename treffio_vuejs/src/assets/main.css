@@ -1,0 +1,17 @@
+/*Here it will go main classes that can be reused along the application development*/
+
+
+/*SIDE BAR*/
+.side_bar {
+    background-color: red;
+}
+.sidebar-options {
+    cursor: pointer;
+}
+.sidebar-button {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.sidebar-button:hover {
+    transform: rotate(90deg);
+}
