@@ -15,3 +15,14 @@
 .sidebar-button:hover {
     transform: rotate(90deg);
 }
+.slide-enter-active {
+    transition: all .5s;
+}
+.slide-leave-active {
+    transition: all .5s cubic-bezier(0.2, 0.2, 0.2, 0.2);
+}
+.slide-enter, .slide-leave-to
+{
+    transform: translateX(-300px);
+    opacity: 0;
+}

@@ -7,7 +7,7 @@
                     <div class="d-flex">
                         <h1>Task Manager</h1>
                         <!-- This icon only appears for Medium and Large Screens-->
-                        <i class="fa-solid fa-bars mt-2 d-none d-lg-block ms-5 fs-1 sidebar-button fixed-end"></i>
+                        <i class="fa-solid fa-bars mt-2 d-none d-lg-block ms-5 fs-1 sidebar-button fixed-end" @click="SlideOff"></i>
                     </div>
                     <hr>
                     <h5 class="sidebar-options">Home</h5>
@@ -30,6 +30,11 @@ export default {
     name: 'DashboardSidebar',
     components: {
         'MainFooter': MainFooter
+    },
+    methods: {
+        SlideOff() {
+            this.$emit('SlideOffMenu')
+        }
     }
 }
 </script>

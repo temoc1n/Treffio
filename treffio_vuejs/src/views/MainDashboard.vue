@@ -1,6 +1,9 @@
 <template>
     <div class="main-content-views d-flex">
-        <DashboardSidebar />
+        <transition name="slide">
+            <DashboardSidebar v-if="menu" @SlideOffMenu="menu = false" />
+        </transition>
+        <button @click="menu = true">Menu</button>
     </div>
 </template>
 <script>
@@ -9,6 +12,11 @@ export default {
     name: 'MainDashboard',
     components:{
         'DashboardSidebar': DashboardSidebar
+    },
+    data() {
+        return {
+            menu: true
+        }
     }
 }
 </script>
