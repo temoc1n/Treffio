@@ -10,11 +10,11 @@
                         <i class="fa-solid fa-bars mt-2 d-none d-lg-block ms-3 fs-1 sidebar-button fixed-end" @click="SlideOff"></i>
                     </div>
                     <hr>
-                    <h5 class="sidebar-options rounded-2 p-1" @click="this.$router.push('/')">Home</h5>
-                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="this.$router.push('/new-task')">New Task</h5>
-                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="this.$router.push('/list-tasks')">List Tasks</h5>
-                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="this.$router.push('/saved-tasks')">Saved Tasks</h5>
-                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="this.$router.push('/trash')">Trash</h5>
+                    <h5 class="sidebar-options rounded-2 p-1" @click="changeRoute('/')">Home</h5>
+                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="changeRoute('/new-task')">New Task</h5>
+                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="changeRoute('/list-tasks')">List Tasks</h5>
+                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="changeRoute('/saved-tasks')">Saved Tasks</h5>
+                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="changeRoute('/trash')">Trash</h5>
                     <hr>
                 </div>
                 <div class="vh-100 footer fixed-bottom m-1 position-relative">
@@ -33,7 +33,11 @@ export default {
     },
     methods: {
         SlideOff() {
-            this.$emit('SlideOffMenu')
+            this.$emit('SlideOffMenu') //Sends an emission to the parent component in order to close the side bar
+        },
+        changeRoute(route) {
+            this.$router.push(route) //changes route
+            this.SlideOff() //executes SlideOff() function
         }
     }
 }
