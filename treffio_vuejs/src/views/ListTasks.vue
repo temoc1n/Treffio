@@ -31,7 +31,6 @@
                     <TaskComponent :card_number="cards.card2.card_number" :card_title="cards.card2.card_title" :card_description="cards.card2.card_description"/>
                     <TaskComponent :card_number="cards.card3.card_number" :card_title="cards.card3.card_title" :card_description="cards.card3.card_description" :card_deadline="cards.card3.card_deadline"/>
                     <TaskComponent :card_number="cards.card3.card_number" :card_title="cards.card3.card_title" :card_description="cards.card3.card_description" :card_deadline="cards.card3.card_deadline"/>
-
                 </div>
             </div>
         </div>

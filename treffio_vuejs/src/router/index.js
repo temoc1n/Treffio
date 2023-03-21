@@ -17,11 +17,6 @@ const routes = [
     component: () => import('../views/ListTasks.vue')
   },
   {
-    path: '/saved-tasks',
-    name: 'saved-tasks',
-    component: () => import('../views/SavedTasks.vue')
-  },
-  {
     path: '/trash',
     name: 'trash',
     component: () => import('../views/TrashView.vue')

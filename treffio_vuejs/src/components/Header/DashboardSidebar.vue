@@ -13,7 +13,6 @@
                     <h5 class="sidebar-options rounded-2 p-1" @click="changeRoute('/')">Home</h5>
                     <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="changeRoute('/new-task')">New Task</h5>
                     <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="changeRoute('/list-tasks')">List Tasks</h5>
-                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="changeRoute('/saved-tasks')">Saved Tasks</h5>
                     <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="changeRoute('/trash')">Trash</h5>
                     <hr>
                 </div>
