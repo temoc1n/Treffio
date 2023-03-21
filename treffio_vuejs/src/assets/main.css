@@ -1,8 +1,35 @@
 /*Here it will go main classes that can be reused along the application development*/
 
+/*General*/
+
+body {
+    background-image: url('../assets/background.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.delete-btn:hover, .delete-btn:active {
+    background-color: rgba(255, 0, 0, 0.744) !important;
+    color: white !important;
+}
+.complete-btn:hover, .complete-btn:active {
+    background-color: rgba(32, 227, 26, 0.744) !important;
+    color: white !important;
+}
+
+.card-number {
+    color: rgba(255,255,255,0.09);
+    font-size: 3rem;
+    z-index: -1;
+    position: absolute;
+    top: -0.5rem;
+    right: 2rem;
+}
+
 /*SIDE BAR*/
 .side_bar {
-    background-color: rgb(13, 74, 23);
+    background-color: rgba(13, 74, 23, 0.656);
 }
 .sidebar-options {
     cursor: pointer;
@@ -34,10 +61,6 @@
 
 /*HEADER*/
 
-.header {
-    background-color: rgb(20, 19, 19);
-}
-
 .header-button {
     cursor: pointer;
 }
@@ -47,6 +70,25 @@
     cursor: pointer;
 }
 
-.cape {
-    background-color:rgba(20, 19, 19, 0.515);
+.card {
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0,0,0,0.5);
+
+    border-top-color: rgba(225,225,225,0.5);
+    border-left-color: rgba(225,225,225,0.5);
+    border-bottom-color: rgba(225,225,225,0.1);
+    border-right-color: rgba(225,225,225,0.1);
+}
+  
+/*TASKS*/
+
+.task-list {
+    width: 2000px !important;
+    overflow-x: scroll !important;
+}
+
+.task-card {
+    background-color: rgba(225,225,225,0.1);
 }

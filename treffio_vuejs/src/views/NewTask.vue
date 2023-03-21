@@ -1,9 +1,11 @@
 <template>
     <div class="container-fluid">
+        <!-- Still working on the darker background-->
         <div class="position-fixed">
             <div class="cape vh-100 wh-100 m-0 position-absolute">
             </div>
         </div>
+        <!---->
         <div class="row h-100">
             <div class="col-md-12">
                 <div class="text-center">

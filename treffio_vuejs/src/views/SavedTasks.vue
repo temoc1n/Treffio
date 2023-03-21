@@ -1,9 +1,9 @@
 <template>
-    <h1>Saved Tasks</h1>
+<h1>Saved</h1>
 </template>
 <script>
 export default {
-    name: 'SavedTasks'    
+    name: 'SavedTasks',
 }
 </script>
 <style scoped>
