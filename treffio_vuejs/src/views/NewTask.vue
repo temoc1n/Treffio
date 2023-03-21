@@ -11,12 +11,12 @@
                 <div class="text-center">
                 </div>
                 <div class="col-md-12 d-flex justify-content-center mt-5">
-                    <div class="card my-auto shadow-lg" :style="getIndex">
+                    <div class="card my-auto shadow-lg task-card" :style="getIndex">
                         <h3 class="text-center mt-3">New Task</h3>
                         <div class="card-body">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Task Name</label>
-                                <input type="name" class="form-control" id="exampleFormControlInput1">
+                                <input type="name" class="form-control border-0" id="exampleFormControlInput1">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Task Description</label>
