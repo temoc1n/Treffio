@@ -25,6 +25,11 @@ const routes = [
     path: '/trash',
     name: 'trash',
     component: () => import('../views/TrashView.vue')
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('../views/AboutView.vue')
   }
 ]
 

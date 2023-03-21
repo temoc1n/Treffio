@@ -4,4 +4,15 @@ import router from './router'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/main.css'
-createApp(App).use(store).use(router).mount('#app')
+
+import Vue from 'vue'
+import helpers from './helpers/global_functions'
+
+export default {
+    install: () => {
+        Vue.prototype.helpers = helpers
+        Vue.helpers = helpers
+    }
+}
+
+createApp(App).use(store).use(router).use(helpers).use(helpers).mount('#app')

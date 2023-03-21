@@ -9,12 +9,12 @@
                 </div>
             </div>
             <div class="col-md-12 d-flex gap-4 justify-content-center mt-5">
-                <CardComponent :style="getIndex" :card_title="cards.newtasks_card.title" :description="cards.newtasks_card.description"/>
-                <CardComponent :style="getIndex" :card_title="cards.deadline_card.title" :description="cards.deadline_card.description"/>
+                <CardComponent :style="getIndex" :card_title="cards.newtasks_card.title" :description="cards.newtasks_card.description" @click="changeRoute('/new-task')"/>
+                <CardComponent :style="getIndex" :card_title="cards.deadline_card.title" :description="cards.deadline_card.description" @click="changeRoute('/list-tasks')"/>
             </div>
             <div class="col-md-12 d-flex gap-4 mt-4 justify-content-center">
-                <CardComponent :style="getIndex" :card_title="cards.savedtasks_card.title" :description="cards.savedtasks_card.description"/>
-                <CardComponent :style="getIndex" :card_title="cards.about_card.title" :description="cards.about_card.description"/>
+                <CardComponent :style="getIndex" :card_title="cards.savedtasks_card.title" :description="cards.savedtasks_card.description" @click="changeRoute('/saved-tasks')"/>
+                <CardComponent :style="getIndex" :card_title="cards.about_card.title" :description="cards.about_card.description" @click="changeRoute('/about')"/>
             </div>
         </div>
     </div>
@@ -51,6 +51,11 @@ export default {
                     description: 'Click to see more about this page'
                 },
             }
+        }
+    },
+    methods: {
+        changeRoute(route) {
+            this.$router.push(route) //changes route
         }
     },
     computed: {
