@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MainDashboard from '../views/MainDashboard'
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: MainDashboard
+    component: () => import('../views/MainDashboard.vue')
   },
   {
     path: '/new-task',

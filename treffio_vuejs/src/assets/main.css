@@ -19,7 +19,11 @@ input, textarea {
     border: 0px solid rgba(255, 250, 250, 0) !important;
 }
 
-.form-control:focus {
+.form-check-input {
+    color: red !important;
+}
+
+.form-control:focus, .form-check-input:focus {
     box-shadow: none !important;
     border-color: none;
 }
@@ -44,7 +48,11 @@ input, textarea {
 
 /*SIDE BAR*/
 .side_bar {
-    background-color: rgba(13, 74, 23, 0.656);
+    background-color: rgba(155, 66, 15, 0.598);
+    /*background-image: url('./side_header.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;*/
 }
 .sidebar-options {
     cursor: pointer;
@@ -110,5 +118,10 @@ input, textarea {
 }
 
 .task-card {
+    cursor: pointer;
     background-color: rgba(225,225,225,0.1);
+    transition: background-color 0.5s;
+}
+.task-card:hover {
+    background-color: rgba(225,225,225,0.4);;
 }

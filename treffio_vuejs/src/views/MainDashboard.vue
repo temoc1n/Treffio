@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="greetings">
                     <div class="text-center">
-                        <h1 class="text-white"><i class="fa-solid fa-house-user fa-beat me-3 mt-5"></i>Hello, {{ username }}!</h1>
+                        <h1 class="text-white"><i class="fa-solid fa-house-user fa-beat me-3 mt-5"></i>Hey, there!</h1>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,6 @@ export default {
     },
     data() {
         return {
-            username: 'User',
             //Card content
             cards: {
                 newtasks_card:{

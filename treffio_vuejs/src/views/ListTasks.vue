@@ -2,12 +2,13 @@
    <div class="container-fluid">
         <div class="row">
             <div class="new-tasks ps-4 mt-5">
-                <div class="text-start">
+                <div class="text-start d-flex">
                     <h2>New Tasks</h2>
                 </div>
                 <hr>
                 <!--Only the first 3 new tasks-->
                 <div class="tasks-list d-flex gap-3 pt-3">
+                    <h2 v-if="!cards">No Tasks added...</h2>
                     <TaskComponent :card_number="cards.card1.card_number" :card_title="cards.card1.card_title" :card_description="cards.card1.card_description"/>
                     <TaskComponent :card_number="cards.card2.card_number" :card_title="cards.card2.card_title" :card_description="cards.card2.card_description"/>
                 </div>
@@ -18,6 +19,7 @@
                 </div>
                 <hr>
                 <div class="tasks-list d-flex gap-3 pt-3">
+                    <h2 v-if="!cards">No Tasks added...</h2>
                     <TaskComponent :card_number="cards.card3.card_number" :card_title="cards.card3.card_title" :card_description="cards.card3.card_description" :card_deadline="cards.card3.card_deadline"/>
                 </div>
             </div>
@@ -27,6 +29,7 @@
                 </div>
                 <hr>
                 <div class="tasks-list d-flex gap-3 pt-3">
+                    <h2 v-if="!cards">No Tasks added...</h2>
                     <TaskComponent :card_number="cards.card1.card_number" :card_title="cards.card1.card_title" :card_description="cards.card1.card_description"/>
                     <TaskComponent :card_number="cards.card2.card_number" :card_title="cards.card2.card_title" :card_description="cards.card2.card_description"/>
                     <TaskComponent :card_number="cards.card3.card_number" :card_title="cards.card3.card_title" :card_description="cards.card3.card_description" :card_deadline="cards.card3.card_deadline"/>
