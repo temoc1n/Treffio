@@ -8,13 +8,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 d-flex gap-4 justify-content-center mt-5">
-                <CardComponent :style="getIndex" :card_title="cards.newtasks_card.title" :description="cards.newtasks_card.description" @click="changeRoute('/new-task')"/>
-                <CardComponent :style="getIndex" :card_title="cards.deadline_card.title" :description="cards.deadline_card.description" @click="changeRoute('/list-tasks')"/>
+            <div class="col-md-12 d-flex gap-4 justify-content-center mt-5" :style="getIndex">
+                <CardComponent :card_title="cards.newtasks_card.title" :description="cards.newtasks_card.description" @click="changeRoute('/new-task')"/>
+                <CardComponent :card_title="cards.deadline_card.title" :description="cards.deadline_card.description" @click="changeRoute('/list-tasks')"/>
             </div>
-            <div class="col-md-12 d-flex gap-4 mt-4 justify-content-center">
-                <CardComponent :style="getIndex" :card_title="cards.savedtasks_card.title" :description="cards.savedtasks_card.description" @click="changeRoute('/saved-tasks')"/>
-                <CardComponent :style="getIndex" :card_title="cards.about_card.title" :description="cards.about_card.description" @click="changeRoute('/about')"/>
+            <div class="col-md-12 d-flex gap-4 mt-4 justify-content-center" :style="getIndex">
+                <CardComponent :card_title="cards.savedtasks_card.title" :description="cards.savedtasks_card.description" @click="changeRoute('/saved-tasks')"/>
+                <CardComponent :card_title="cards.about_card.title" :description="cards.about_card.description" @click="changeRoute('/about')"/>
             </div>
         </div>
     </div>
@@ -39,11 +39,11 @@ export default {
                 },
                 deadline_card:{
                     title: 'Almost on deadline',
-                    description: 'No tasks added recently...'
+                    description: 'No tasks with deadlines...'
                 },
                 savedtasks_card:{
                     title: 'Saved Tasks',
-                    description: 'No tasks added recently...'
+                    description: 'No tasks saved...'
                 },
                 about_card:{
                     title: 'About the page',

@@ -46,3 +46,7 @@
 .main_card {
     cursor: pointer;
 }
+
+.cape {
+    background-color:rgba(20, 19, 19, 0.515);
+}
