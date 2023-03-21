@@ -7,7 +7,7 @@
           </transition>
         </div>
         <DashboardHeader @openMenu="menu = true" />
-        <router-view/>
+        <router-view />
       </div>
   </div>
 </template>

@@ -32,8 +32,12 @@ export default {
         'MainFooter': MainFooter
     },
     methods: {
+        unlockScreen(){
+            this.$store.commit('unlockScreen') //unlocks the screen
+        },
         SlideOff() {
             this.$emit('SlideOffMenu') //Sends an emission to the parent component in order to close the side bar
+            this.unlockScreen();
         },
         changeRoute(route) {
             this.$router.push(route) //changes route

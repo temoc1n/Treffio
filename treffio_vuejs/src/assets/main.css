@@ -44,6 +44,5 @@
 
 /*CARDS*/
 .card {
-    z-index: -1;
     cursor: pointer;
 }

@@ -10,7 +10,8 @@ export default {
     name: 'DashboardHeader',
     methods: {
         openMenu() {
-            this.$emit('openMenu')
+          this.$store.commit('lockScreen') //changes the background to locked
+          this.$emit('openMenu')
         }
     } 
 }
