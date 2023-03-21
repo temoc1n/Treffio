@@ -3,20 +3,23 @@
 
 /*SIDE BAR*/
 .side_bar {
-    background-color: rgba(13, 74, 23, 0.793);
+    background-color: rgb(13, 74, 23);
 }
 .sidebar-options {
     cursor: pointer;
+    color: white;
+    transform: color 0.2s;
 }
 .sidebar-options:hover {
-    background-color: rgba(74, 74, 74, 0.754) ;
+    color: rgba(222, 222, 222, 0.741) !important;
 }
 .sidebar-button {
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: color 0.2s;
+    color: white;
 }
 .sidebar-button:hover {
-    transform: rotate(90deg);
+    color: rgba(255, 255, 255, 0.741);
 }
 .slide-enter-active {
     transition: all .5s;
@@ -28,4 +31,14 @@
 {
     transform: translateX(-300px);
     opacity: 0;
+}
+
+/*HEADER*/
+
+.header {
+    background-color: rgb(20, 19, 19);
+}
+
+.header-button {
+    cursor: pointer;
 }

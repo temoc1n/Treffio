@@ -2,10 +2,10 @@
     <!-- Sidebar  -->
     <div class="container-fluid overflow-hidden">
         <div class="row vh-100">
-            <div class="col-5 col-md-4 side_bar">
+            <div class="side_bar">
                 <div class="options mt-4">
                     <div class="d-flex">
-                        <h1>Task Manager</h1>
+                        <h1 class="text-white">Task Manager</h1>
                         <!-- This icon only appears for Medium and Large Screens-->
                         <i class="fa-solid fa-bars mt-2 d-none d-lg-block ms-3 fs-1 sidebar-button fixed-end" @click="SlideOff"></i>
                     </div>

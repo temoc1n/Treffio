@@ -1,5 +1,7 @@
 <template>
-    <h1>Main Dahsbord</h1>
+    <div class="">
+        <h1>Main Dashboard</h1>
+    </div>
 </template>
 <script>
 export default {

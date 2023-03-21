@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="position-relative">
-            <span>@{{ year }} TaskManager</span>
+            <span class="text-white">@{{ year }} TaskManager</span>
         </div>
     </footer>
 </template>
