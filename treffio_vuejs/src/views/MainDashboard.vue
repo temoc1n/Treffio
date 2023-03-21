@@ -30,7 +30,6 @@ export default {
     },
     data() {
         return {
-            index: undefined,
             username: 'User',
             //Card content
             cards: {
