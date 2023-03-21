@@ -6,7 +6,7 @@
             <DashboardSidebar v-if="menu" @SlideOffMenu="menu = false" />
           </transition>
         </div>
-        <DashboardHeader @openMenu="menu = true"/>
+        <DashboardHeader @openMenu="menu = true" />
         <router-view/>
       </div>
   </div>
@@ -23,7 +23,7 @@ export default {
     },
   data() {
       return {
-          menu: true
+          menu: false
       }
   }
 }

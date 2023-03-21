@@ -1,6 +1,5 @@
 /*Here it will go main classes that can be reused along the application development*/
 
-
 /*SIDE BAR*/
 .side_bar {
     background-color: rgb(13, 74, 23);
@@ -40,5 +39,11 @@
 }
 
 .header-button {
+    cursor: pointer;
+}
+
+/*CARDS*/
+.card {
+    z-index: -1;
     cursor: pointer;
 }
