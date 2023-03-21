@@ -5,14 +5,26 @@ const routes = [
     path: '/',
     name: 'home',
     component: MainDashboard
-  //},
-  //{
-  //  path: '/about',
-  //  name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-  //  component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+  },
+  {
+    path: '/new-task',
+    name: 'new-task',
+    component: () => import('../views/NewTask.vue')
+  },
+  {
+    path: '/list-tasks',
+    name: 'list-tasks',
+    component: () => import('../views/ListTasks.vue')
+  },
+  {
+    path: '/saved-tasks',
+    name: 'saved-tasks',
+    component: () => import('../views/SavedTasks.vue')
+  },
+  {
+    path: '/trash',
+    name: 'trash',
+    component: () => import('../views/TrashView.vue')
   }
 ]
 

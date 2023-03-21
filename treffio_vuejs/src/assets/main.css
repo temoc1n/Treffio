@@ -3,10 +3,13 @@
 
 /*SIDE BAR*/
 .side_bar {
-    background-color: red;
+    background-color: rgba(13, 74, 23, 0.793);
 }
 .sidebar-options {
     cursor: pointer;
+}
+.sidebar-options:hover {
+    background-color: rgba(74, 74, 74, 0.754) ;
 }
 .sidebar-button {
     cursor: pointer;
