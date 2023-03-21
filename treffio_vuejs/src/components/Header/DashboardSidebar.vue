@@ -7,14 +7,14 @@
                     <div class="d-flex">
                         <h1>Task Manager</h1>
                         <!-- This icon only appears for Medium and Large Screens-->
-                        <i class="fa-solid fa-bars mt-2 d-none d-lg-block ms-5 fs-1 sidebar-button fixed-end" @click="SlideOff"></i>
+                        <i class="fa-solid fa-bars mt-2 d-none d-lg-block ms-3 fs-1 sidebar-button fixed-end" @click="SlideOff"></i>
                     </div>
                     <hr>
-                    <h5 class="sidebar-options rounded-2 p-1">Home</h5>
-                    <h5 class="sidebar-options rounded-2 p-1 mt-3">New Task</h5>
-                    <h5 class="sidebar-options rounded-2 p-1 mt-3">List Tasks</h5>
-                    <h5 class="sidebar-options rounded-2 p-1 mt-3">Saved Tasks</h5>
-                    <h5 class="sidebar-options rounded-2 p-1 mt-3">Trash</h5>
+                    <h5 class="sidebar-options rounded-2 p-1" @click="this.$router.push('/')">Home</h5>
+                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="this.$router.push('/new-task')">New Task</h5>
+                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="this.$router.push('/list-tasks')">List Tasks</h5>
+                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="this.$router.push('/saved-tasks')">Saved Tasks</h5>
+                    <h5 class="sidebar-options rounded-2 p-1 mt-3" @click="this.$router.push('/trash')">Trash</h5>
                     <hr>
                 </div>
                 <div class="vh-100 footer fixed-bottom m-1 position-relative">
