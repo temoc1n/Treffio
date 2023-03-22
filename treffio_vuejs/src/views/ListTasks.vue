@@ -1,46 +1,29 @@
 <template>
-   <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
-            <div class="new-tasks ps-4 mt-5">
-                <div class="text-start d-flex">
-                    <h2>New Tasks</h2>
-                </div>
-                <hr>
-                <!--Only the first 3 new tasks-->
-                <div class="tasks-list d-flex gap-3 pt-3">
-                    <h2 v-if="!cards">No Tasks added...</h2>
-                    <TaskComponent :card_number="cards.card1.card_number" :card_title="cards.card1.card_title" :card_description="cards.card1.card_description"/>
-                    <TaskComponent :card_number="cards.card2.card_number" :card_title="cards.card2.card_title" :card_description="cards.card2.card_description"/>
-                </div>
+            <h2 class="ps-5">New Tasks</h2>
+            <hr>
+            <div class="d-flex gap-3 p-5 pt-0 overflow-auto task-lister">
+                <TaskComponent v-for="task in newTasks" :key="task" :card_number="task.id" :card_title="task.name" :card_description="task.description" :card_deadline="task.deadline"/>
             </div>
-            <div class="deadline-tasks ps-4 mt-5">
-                <div class="text-start">
-                    <h2>Deadlines</h2>
-                </div>
-                <hr>
-                <div class="tasks-list d-flex gap-3 pt-3">
-                    <h2 v-if="!cards">No Tasks added...</h2>
-                    <TaskComponent :card_number="cards.card3.card_number" :card_title="cards.card3.card_title" :card_description="cards.card3.card_description" :card_deadline="cards.card3.card_deadline"/>
-                </div>
+            <h2 class="ps-5">All Tasks</h2>
+            <hr>
+            <div class="d-flex gap-3 p-5 pt-0 overflow-auto task-lister">
+                <TaskComponent v-for="task in all_data" :key="task" :card_number="task.id" :card_title="task.name" :card_description="task.description" :card_deadline="task.deadline" />
             </div>
-            <div class="all-tasks ps-4 mt-5 mb-5" :style="getIndex">
-                <div class="text-start">
-                    <h2>On Going Tasks</h2>
-                </div>
-                <hr>
-                <div class="tasks-list d-flex gap-3 pt-3">
-                    <h2 v-if="!cards">No Tasks added...</h2>
-                    <TaskComponent :card_number="cards.card1.card_number" :card_title="cards.card1.card_title" :card_description="cards.card1.card_description"/>
-                    <TaskComponent :card_number="cards.card2.card_number" :card_title="cards.card2.card_title" :card_description="cards.card2.card_description"/>
-                    <TaskComponent :card_number="cards.card3.card_number" :card_title="cards.card3.card_title" :card_description="cards.card3.card_description" :card_deadline="cards.card3.card_deadline"/>
-                    <TaskComponent :card_number="cards.card3.card_number" :card_title="cards.card3.card_title" :card_description="cards.card3.card_description" :card_deadline="cards.card3.card_deadline"/>
-                </div>
+            <h2 class="ps-5">Deadlines</h2>
+            <hr>
+            <div class="d-flex gap-3 p-5 pt-0 overflow-auto task-lister">
+                <TaskComponent v-for="task in deadlineTasks" :key="task" :card_number="task.id" :card_title="task.name" :card_description="task.description" :card_deadline="task.deadline" />
             </div>
+
         </div>
     </div>
 </template>
 <script>
-import TaskComponent from '@/components/Cards/TaskComponent.vue'
+import { mapGetters } from 'vuex';
+import axios from 'axios';
+import TaskComponent from '@/components/Cards/TaskComponent.vue';
 export default {
     name: 'ListTasks',
     components:{
@@ -48,25 +31,37 @@ export default {
     },
     data() {
         return{
-            cards:{
-                card1:{
-                    card_number: 1,
-                    card_title: "Wash Dishes",
-                    card_description: "I need to wash the dishes before my mom comes home."
-                },
-                card2:{
-                    card_number: 2,
-                    card_title: "Clean Room",
-                    card_description: "I need to clean the room before my mom comes home."
-                },
-                card3:{
-                    card_number: 3,
-                    card_title: "Walk the dog",
-                    card_description: "I need to walk the dog before my mom comes home.",
-                    card_deadline: "13 Mar 2023 | 10:11 a.m"
+            all_data: undefined,
+            deadlineTasks: [],
+            newTasks: []
+        }
+    },
+    methods: {
+        filterDeadline() {
+            this.all_data.forEach(element => {
+                if(element.deadline){
+                    this.deadlineTasks.push(element)
                 }
+            });
+        },
+        filterNewTasks() {
+            for(let i = 1; i < 4; i++) {
+                this.newTasks.push(this.all_data[this.all_data.length - i])
             }
         }
+    },
+    computed: {
+        ...mapGetters([
+            'getIndex'
+        ])
+    },
+    mounted() {
+        axios.get('http://localhost/api/v1/tasks')
+        .then(response => {
+            this.all_data = response.data.data;
+            this.filterDeadline();
+            this.filterNewTasks();
+        })
     }
 }
 </script>

@@ -1,14 +1,12 @@
 <template>
-    <div class="card w-25 task-card" :style="getIndex" >
+    <div class="card task-card col-md-3 h-100" :style="getIndex" >
         <div class="card-body text-center">
             <div class="text-start" data-toggle="tooltip" :title="card_deadline">
                 <i v-if="card_deadline" class="fa-solid fa-exclamation fa-beat-fade position-absolute fs-3"></i>
             </div>
             <span class="card-number fw-bolder">{{ card_number }}</span>
             <h3 class="card-title">{{ card_title }}</h3>
-            <p class="card-text">{{ card_description }}</p>
-            <a href="#" class="btn delete-btn btn-outline-light me-3">Delete</a>
-            <a href="#" class="btn complete-btn btn-outline-light">Completed!</a>
+            <p class="card-text task-text">{{ card_description }}</p>
         </div>
     </div>
 </template>

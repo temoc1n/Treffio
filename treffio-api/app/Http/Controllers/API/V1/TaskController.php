@@ -74,8 +74,15 @@ class TaskController extends Controller
         
         $checkTask = Task::find($id);
 
+        if (!$checkTask)
+        {
+            return "Impossible to delete task.";
+        } else {
+            Task::findOrFail($id)->delete();
+            return "Task Deleted!";
+        }
 
-        abort(404, $checkTask);
+
 
     }
 }
