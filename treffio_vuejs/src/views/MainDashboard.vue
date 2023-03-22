@@ -33,16 +33,16 @@ export default {
             //Card content
             cards: {
                 newtasks_card:{
-                    title: 'New Tasks',
-                    description: 'No tasks added recently...'
+                    title: 'New Task',
+                    description: 'Add a new Task to your schedule!'
                 },
                 deadline_card:{
-                    title: 'Almost on deadline',
-                    description: 'No tasks with deadlines...'
+                    title: 'Deadlines',
+                    description: 'Don\'t forget your deadline tasks! Go take a look...'
                 },
                 savedtasks_card:{
-                    title: 'Deleted Tasks',
-                    description: 'No tasks deleted...'
+                    title: 'Completed Tasks!',
+                    description: 'Each task is a step forward 😉'
                 },
                 about_card:{
                     title: 'About the page',

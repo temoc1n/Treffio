@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-    name: 'TrashView'    
+    name: 'CompletedTasks'    
 }
 </script>
 <style scoped>

@@ -16,9 +16,9 @@ const routes = [
     component: () => import('../views/ListTasks.vue')
   },
   {
-    path: '/trash',
-    name: 'trash',
-    component: () => import('../views/TrashView.vue')
+    path: '/completed',
+    name: 'completed-tasks',
+    component: () => import('../views/CompletedTasks.vue')
   },
   {
     path: '/about',
