@@ -1,19 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1; /*-> Notice that the namespace changed, this is because we are assigning  this controller to the first version of the API (V1), we do this so it is possible for us in the future to create multiple versions of the API and still keep the oldest versions available*/
 
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
+use App\Http\Controllers\Controller;
+
+use App\Http\Resources\V1\TaskResource;
+use App\Http\Resources\V1\TaskCollection;
+//use App\Services\V1\TaskQuery;
+
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return new TaskCollection(Task::all()); 
     }
 
     /**
@@ -29,7 +36,7 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        return new TaskResource(Task::create($request->all()));
     }
 
     /**
@@ -37,7 +44,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return new TaskResource($task);
     }
 
     /**
@@ -53,7 +60,9 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        $task->update($request->all());
+
+        return new TaskResource($task);
     }
 
     /**
@@ -61,6 +70,12 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $id = $task->id;            //Gets the ID assigned to the object Task
+        
+        $checkTask = Task::find($id);
+
+
+        abort(404, $checkTask);
+
     }
 }

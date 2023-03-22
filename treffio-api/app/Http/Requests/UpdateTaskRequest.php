@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Illuminate\Validation\Rule;
+
 class UpdateTaskRequest extends FormRequest
 {
     /**
@@ -11,7 +13,7 @@ class UpdateTaskRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +23,19 @@ class UpdateTaskRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+
+        $method = $this->method();
+
+        if($method == 'PUT') {
+            return [
+                'name' => ['sometimes', 'required'],
+                'description' => ['sometimes', 'required'],
+                'deadline' => ['sometimes', 'required'],
+                'done' => ['sometimes', 'required', Rule::in([0,1])]
+            ];
+        } else {
+            return "Use PUT to update the tasks";
+        }
+
     }
 }
