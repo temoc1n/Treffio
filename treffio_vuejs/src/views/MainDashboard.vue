@@ -13,7 +13,7 @@
                 <CardComponent :card_title="cards.deadline_card.title" :description="cards.deadline_card.description" @click="changeRoute('/list-tasks')"/>
             </div>
             <div class="col-md-12 d-flex gap-4 mt-4 justify-content-center" :style="getIndex">
-                <CardComponent :card_title="cards.savedtasks_card.title" :description="cards.savedtasks_card.description" @click="changeRoute('/trash')"/>
+                <CardComponent :card_title="cards.savedtasks_card.title" :description="cards.savedtasks_card.description + totalDone + ' tasks'" />
                 <CardComponent :card_title="cards.about_card.title" :description="cards.about_card.description" @click="changeRoute('/about')"/>
             </div>
         </div>
@@ -23,6 +23,7 @@
 //Here I want to put some news about the app, plus, some ways of redirecting the user to other pages
 import CardComponent from '@/components/Cards/CardComponent.vue'
 import { mapGetters } from 'vuex'
+import axios from 'axios'
 export default {
     name: 'MainDashboard',
     components: {
@@ -31,18 +32,19 @@ export default {
     data() {
         return {
             //Card content
+            totalDone: 0,
             cards: {
                 newtasks_card:{
                     title: 'New Task',
                     description: 'Add a new Task to your schedule!'
                 },
                 deadline_card:{
-                    title: 'Deadlines',
-                    description: 'Don\'t forget your deadline tasks! Go take a look...'
+                    title: 'Task List',
+                    description: 'Check out how many tasks you still have left!'
                 },
                 savedtasks_card:{
                     title: 'Completed Tasks!',
-                    description: 'Each task is a step forward 😉'
+                    description: 'You have completed a total of '
                 },
                 about_card:{
                     title: 'About the page',
@@ -60,6 +62,17 @@ export default {
         ...mapGetters([
             'getIndex'
         ])
+    },
+    mounted() {
+        axios.get('http://127.0.0.1/api/v1/tasks')
+        .then(response => {
+            let dataTasks = response.data.data
+            for(let i = 0; i < dataTasks.length; i++) {
+                if(dataTasks[i].done) {
+                    this.totalDone++;
+                }
+            }
+        })
     }
 }
 </script>

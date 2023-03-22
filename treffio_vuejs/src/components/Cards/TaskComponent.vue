@@ -1,5 +1,5 @@
 <template>
-    <div class="card task-card col-md-3 h-100" :style="getIndex" >
+    <div class="card task-card col-md-3 h-100 col-3 overflow" :style="getIndex" >
         <div class="card-body text-center">
             <div class="text-start" data-toggle="tooltip" :title="card_deadline">
                 <i v-if="card_deadline" class="fa-solid fa-exclamation fa-beat-fade position-absolute fs-3"></i>

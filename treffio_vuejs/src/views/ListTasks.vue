@@ -56,7 +56,7 @@ export default {
         ])
     },
     mounted() {
-        axios.get('http://localhost/api/v1/tasks')
+        axios.get('http://127.0.0.1/api/v1/tasks')
         .then(response => {
             this.all_data = response.data.data;
             this.filterDeadline();

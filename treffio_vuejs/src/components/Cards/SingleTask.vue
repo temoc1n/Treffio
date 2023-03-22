@@ -24,7 +24,7 @@
                                 <input v-model="newTask.deadline" class="form-control" type="datetime-local" />
                             </div>
                             <div class="justify-content-center d-flex">
-                                <button class="btn btn-success mt-3" @click="CreateTask()">Save</button>
+                                <button class="btn btn-success mt-3">Save</button>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
 import { mapGetters } from 'vuex'
 import axios from 'axios';
 export default {
-    name: 'NewTask',
+    name: 'SingleTask',
     data(){
         return{
             tasks: undefined,
