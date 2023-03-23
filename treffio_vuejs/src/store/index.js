@@ -9,10 +9,14 @@ lockScreen() and unlockScreen(): are function to switch between locked and unloc
 export default createStore({
   state: {
     index_lock: "z-index: 1",
+    taskID: 0
   },
   getters: {
     getIndex(state) {
       return state.index_lock;
+    },
+    getTask(state) {
+      return state.taskID;
     }
   },
   mutations: {
@@ -21,6 +25,9 @@ export default createStore({
     },
     unlockScreen(state) {
       return state.index_lock = "z-index: 1"
+    },
+    updateTask(state, task_id) {
+      return state.taskID = task_id
     }
   },
   actions: {

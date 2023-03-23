@@ -1,20 +1,20 @@
 <template>
     <div class="container-fluid">
         <div class="row">
-            <h2 class="ps-5">New Tasks</h2>
-            <hr>
-            <div class="d-flex gap-3 p-5 pt-0 overflow-auto task-lister">
-                <TaskComponent v-for="task in newTasks" :key="task" :card_number="task.id" :card_title="task.name" :card_description="task.description" :card_deadline="task.deadline"/>
-            </div>
             <h2 class="ps-5">All Tasks</h2>
             <hr>
             <div class="d-flex gap-3 p-5 pt-0 overflow-auto task-lister">
-                <TaskComponent v-for="task in all_data" :key="task" :card_number="task.id" :card_title="task.name" :card_description="task.description" :card_deadline="task.deadline" />
+                <TaskComponent v-for="task in all_data" :key="task.id" :card_number="task.id" :card_title="task.name" :card_description="task.description" :card_deadline="task.deadline" />
             </div>
             <h2 class="ps-5">Deadlines</h2>
             <hr>
             <div class="d-flex gap-3 p-5 pt-0 overflow-auto task-lister">
-                <TaskComponent v-for="task in deadlineTasks" :key="task" :card_number="task.id" :card_title="task.name" :card_description="task.description" :card_deadline="task.deadline" />
+                <TaskComponent v-for="task in deadlineTasks" :key="task.id" :card_number="task.id" :card_title="task.name" :card_description="task.description" :card_deadline="task.deadline" />
+            </div>
+            <h2 class="ps-5">Done!</h2>
+            <hr>
+            <div class="d-flex gap-3 p-5 pt-0 overflow-auto task-lister">
+                <TaskComponent v-for="task in newTasks" :key="task.id" :card_number="task.id" :card_title="task.name" :card_description="task.description" :card_deadline="task.deadline"/>
             </div>
 
         </div>
@@ -39,15 +39,20 @@ export default {
     methods: {
         filterDeadline() {
             this.all_data.forEach(element => {
-                if(element.deadline){
+                if(element.deadline !== "0"){
+                    console.log("Debugame MAIN")
+                }
+                if(element.deadline !== null && element.deadline !== "0"){
                     this.deadlineTasks.push(element)
                 }
             });
         },
         filterNewTasks() {
-            for(let i = 1; i < 4; i++) {
-                this.newTasks.push(this.all_data[this.all_data.length - i])
-            }
+            this.all_data.forEach(element => {
+                if(element.done){
+                    this.newTasks.push(element)
+                }
+            });
         }
     },
     computed: {

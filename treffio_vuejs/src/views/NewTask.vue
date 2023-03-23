@@ -45,7 +45,7 @@ export default {
             newTask: {
                 name: undefined,
                 description: undefined,
-                deadline: "null",
+                deadline: null,
                 done: 0
             }
 
@@ -54,8 +54,8 @@ export default {
     methods: {
         CreateTask() {
             axios.post('http://127.0.0.1/api/v1/tasks', {'name': this.newTask.name, 'description': this.newTask.description, 'deadline': this.newTask.deadline, 'done': this.newTask.done})
-            .then(response => {
-                console.log(response);
+            .then(() => {
+                this.$router.push('/list-tasks')
             })
         }
     },  

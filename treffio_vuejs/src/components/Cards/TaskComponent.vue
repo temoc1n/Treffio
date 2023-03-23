@@ -1,8 +1,8 @@
 <template>
-    <div class="card task-card col-md-3 h-100 col-3 overflow" :style="getIndex" >
+    <div class="card task-card col-md-3 h-100 col-3 overflow" :style="getIndex" @click="seeTask()" >
         <div class="card-body text-center">
             <div class="text-start" data-toggle="tooltip" :title="card_deadline">
-                <i v-if="card_deadline" class="fa-solid fa-exclamation fa-beat-fade position-absolute fs-3"></i>
+                <i v-if="card_deadline && card_deadline !== '0'" class="fa-solid fa-exclamation fa-beat-fade position-absolute fs-3"></i>
             </div>
             <span class="card-number fw-bolder">{{ card_number }}</span>
             <h3 class="card-title">{{ card_title }}</h3>
@@ -12,6 +12,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+
 export default {
     name: 'TaskComponent',
     props: {
@@ -19,6 +20,12 @@ export default {
         card_title: String,
         card_description: String,
         card_deadline: String
+    },
+    methods: {
+        seeTask() {
+            this.$store.commit('updateTask', this.card_number);
+            this.$router.push('/task/view');
+        }
     },
     computed: {
         ...mapGetters([
