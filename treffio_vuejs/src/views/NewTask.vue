@@ -5,6 +5,11 @@
                 <div class="text-center">
                 </div>
                 <div class="col-md-12 d-flex justify-content-center mt-5">
+                    <div class="position-relative">
+                        <div class="alert position-absolute w-100">
+                            <h4>asdds</h4>
+                        </div>
+                    </div>
                     <div class="card my-auto shadow-lg task-card" :style="getIndex">
                         <h3 class="text-center mt-3">New Task</h3>
                         <div class="card-body">

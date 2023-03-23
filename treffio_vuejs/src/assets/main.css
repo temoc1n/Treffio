@@ -19,6 +19,11 @@ input, textarea {
     border: 0px solid rgba(255, 250, 250, 0) !important;
 }
 
+.alert {
+    z-index: 1999;
+    background-color: red;
+}
+
 .form-check-input {
     color: red !important;
 }
