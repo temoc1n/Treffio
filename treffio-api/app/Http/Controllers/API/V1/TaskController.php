@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\V1; /*-> Notice that the namespace changed, this is because we are assigning  this controller to the first version of the API (V1), we do this so it is possible for us in the future to create multiple versions of the API and still keep the oldest versions available*/
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
@@ -20,7 +21,13 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        return new TaskCollection(Task::all()); 
+        //Orders the database data starting by the last item created
+        $task = DB::table('tasks')
+            ->orderBy('created_at','desc')
+            ->get();
+
+        //Returns those values after parsing the values through the TaskCollection
+        return new TaskCollection($task); 
     }
 
     /**
