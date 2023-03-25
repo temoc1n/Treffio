@@ -50,7 +50,7 @@
 >
 >     `VUE_APP_API_ENDPOINT=/api/v1/tasks`
 > 
->3. Now inside the folder run `npm run serve`
+>3. Now inside the folder run `npm install` followed by `npm run serve`
 > 
 >4. **The frontend should be up by now**
 > 
