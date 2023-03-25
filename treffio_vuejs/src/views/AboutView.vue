@@ -5,6 +5,11 @@
     </div>
 </template>
 <script>
+
+/*
+    Not much to say in here...
+*/
+
 export default {
     name: 'AboutPage'    
 }

@@ -21,13 +21,13 @@ export default createStore({
   },
   mutations: {
     lockScreen(state) {
-      return state.index_lock = "z-index: -1"
+      return state.index_lock = "z-index: -1"   //Set the z-index to -1
     },
     unlockScreen(state) {
-      return state.index_lock = "z-index: 1"
+      return state.index_lock = "z-index: 1"  //Set the z-index to 1
     },
     updateTask(state, task_id) {
-      return state.taskID = task_id
+      return state.taskID = task_id     //Returns the id of a task
     }
   },
   actions: {

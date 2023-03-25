@@ -34,8 +34,10 @@
     </div>
 </template>
 <script>
+
 import { mapGetters } from 'vuex'
-import axios from 'axios';
+import API_REQUEST from '@/services/ApiRequests'
+
 export default {
     name: 'NewTask',
     data(){
@@ -52,16 +54,19 @@ export default {
         }
     },
     methods: {
+        // The API URL and API ENDPOINT are in 2 different variables because in the future we might need to add new endpoints and so it is already divided
         CreateTask() {
-            axios.post('http://127.0.0.1/api/v1/tasks', {'name': this.newTask.name, 'description': this.newTask.description, 'deadline': this.newTask.deadline, 'done': this.newTask.done})
-            .then(() => {
-                this.$router.push('/list-tasks')
+
+            const apiService = new API_REQUEST; //Creates a new object of the services class
+
+            apiService.createTask(this.newTask.name, this.newTask.description, this.newTask.deadline, this.newTask.done).then(() => {
+                this.$router.push("/list-tasks")
             })
         }
     },  
     computed: {
         ...mapGetters([
-            'getIndex'
+            'getIndex' //It allow us to return the value of VUEX store and lock or unlocks the screen depending if we are or not with the menu open 
         ])
     }
 }

@@ -1,4 +1,4 @@
-# treffio_vuejs
+# treffio-vuejs
 
 ## Project setup
 ```

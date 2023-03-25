@@ -54,10 +54,6 @@ input, textarea {
 /*SIDE BAR*/
 .side_bar {
     background-color: rgba(155, 66, 15, 0.598);
-    /*background-image: url('./side_header.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;*/
 }
 .sidebar-options {
     cursor: pointer;
@@ -117,6 +113,7 @@ input, textarea {
 .card-text {
     overflow: hidden;
 }
+
 /*TASKS*/
 .task-card {
     cursor: pointer;

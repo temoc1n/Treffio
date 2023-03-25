@@ -10,7 +10,7 @@ export default {
     name: 'MainFooter',
     data() {
         return {
-            year: new Date().getFullYear()
+            year: new Date().getFullYear()      //Gets the current year
         }
     }
 }

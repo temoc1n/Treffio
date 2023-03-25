@@ -20,10 +20,10 @@
     </div>
 </template>
 <script>
-//Here I want to put some news about the app, plus, some ways of redirecting the user to other pages
-import CardComponent from '@/components/Cards/CardComponent.vue'
-import { mapGetters } from 'vuex'
-import axios from 'axios'
+
+import API_REQUEST from '@/services/ApiRequests';
+import CardComponent from '@/components/Cards/CardComponent.vue';
+import { mapGetters } from 'vuex';
 export default {
     name: 'MainDashboard',
     components: {
@@ -55,24 +55,25 @@ export default {
     },
     methods: {
         changeRoute(route) {
-            this.$router.push(route) //changes route
+            this.$router.push(route); //changes route
         }
     },
     computed: {
         ...mapGetters([
-            'getIndex'
+            'getIndex'  //It allow us to return the value of VUEX store and lock or unlocks the screen depending if we are or not with the menu open 
         ])
     },
     mounted() {
-        axios.get('http://127.0.0.1/api/v1/tasks')
-        .then(response => {
-            let dataTasks = response.data.data
-            for(let i = 0; i < dataTasks.length; i++) {
-                if(dataTasks[i].done) {
-                    this.totalDone++;
+        const apiService = new API_REQUEST;  //Creates a new object of the services class
+        
+        apiService.getTasks().then((tasks) => {      //chains .then() in order to read the values of async
+            for(let i = 0; i < tasks.length; i++) { //sorts how many tasks are done
+                if(tasks[i].done) {
+                    this.totalDone++;       //increases the value of totalDone every time a task is done
                 }
             }
-        })
+        });
+
     }
 }
 </script>

@@ -21,51 +21,66 @@
     </div>
 </template>
 <script>
+
 import { mapGetters } from 'vuex';
-import axios from 'axios';
 import TaskComponent from '@/components/Cards/TaskComponent.vue';
+import API_REQUEST from '@/services/ApiRequests';
+
 export default {
     name: 'ListTasks',
     components:{
         'TaskComponent': TaskComponent
     },
     data() {
-        return{
+        return {
             all_data: undefined,
             deadlineTasks: [],
             newTasks: []
         }
     },
+
+    /*
+        This filter problem has 2 solutions:
+        
+        1. Create a filter on the backend in order to provide the data needed already filtered,
+        making it easier for the frontend developer to quicly consume the data and render it
+
+        2. Create a filter in the frontend to prevent more requests to the backend than needed,
+        since this are simple filters they can be implemented quickly and efficiently.
+
+        :: I chose solution 2 to prevent more requests than what is usefull.
+    */
+
     methods: {
-        filterDeadline() {
+        filterDeadline() {  //filter tasks that have deadlines set
             this.all_data.forEach(element => {
-                if(element.deadline !== "0"){
-                    console.log("Debugame MAIN")
-                }
-                if(element.deadline !== null && element.deadline !== "0"){
-                    this.deadlineTasks.push(element)
+                if(element.deadline !== null && element.deadline !== "0") {
+                    this.deadlineTasks.push(element);
                 }
             });
         },
-        filterNewTasks() {
+        filterNewTasks() {      //Filter tasks that are done
             this.all_data.forEach(element => {
-                if(element.done){
-                    this.newTasks.push(element)
+                if(element.done) {
+                    this.newTasks.push(element);
                 }
             });
         }
     },
     computed: {
-        ...mapGetters([
+        ...mapGetters([         //It allow us to return the value of VUEX store and lock or unlocks the screen depending if we are or not with the menu open 
             'getIndex'
         ])
     },
     mounted() {
-        axios.get('http://127.0.0.1/api/v1/tasks')
-        .then(response => {
-            this.all_data = response.data.data;
-            this.filterDeadline();
-            this.filterNewTasks();
+
+        //Gets a list of all tasks through ApiRequests.js file
+        const apiService = new API_REQUEST; 
+
+        apiService.getTasks().then((tasks) => {
+            this.all_data = tasks;                  //Adds all tasks to "all_data" variable
+            this.filterDeadline();                  //Calls function filterDeadline() in order to filter the services with deadlines
+            this.filterNewTasks();                  //Calls function filterNewTasks() in order to filter the services that are done
         })
     }
 }

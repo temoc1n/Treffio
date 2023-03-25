@@ -42,12 +42,15 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
-import axios from 'axios';
+
+import { mapGetters } from 'vuex';
+import API_REQUEST from '@/services/ApiRequests';
+
 export default {
     name: 'SingleTask',
     data(){
         return{
+            apiService: new API_REQUEST, //Creates a new object of the services class in a global way, so it is not necessary to start an instance everytime we create a function
             copy: undefined,
             editMode: false,
             Task: {
@@ -59,49 +62,54 @@ export default {
         }
     },
     methods: {
-        UpdateTask() {
-            axios.put('http://127.0.0.1/api/v1/tasks/'+this.getTask, {'name': this.Task.name, 'description': this.Task.description, 'deadline': this.Task.deadline})
+        
+        UpdateTask() { //This function updates a task
+            this.apiService.updateTask(this.getTask, this.Task.name, this.Task.description, this.Task.deadline)
             .then(() => {
-                this.editMode = false;
+                this.editMode = false;  //Changes edit mode to false
             })
         },
-        DeleteTask() {
-            axios.delete('http://127.0.0.1/api/v1/tasks/'+this.getTask)
+
+        DeleteTask() { //This function deletes a task
+            this.apiService.deleteTask(this.getTask)
             .then(() => {
-                this.$router.push('/list-tasks');
+                this.$router.push('/list-tasks');       //Changes route
             })
         },
-        DoneTask(value) {
-            axios.put('http://127.0.0.1/api/v1/tasks/'+this.getTask, {'done': value, 'deadline': 0})
+
+        DoneTask(value) {   //This function changes the value of done from a task every time a task is Done
+            this.apiService.doneTask(this.getTask, value, 0)
             .then(() => {
-                if(value){
-                    this.Task.done = 1;
+                if(value) {
+                    this.Task.done = 1;     //Sets done to 1
                 }else{
-                    this.Task.done = 0;
+                    this.Task.done = 0;     //Sets done to 0
                 }
-            })
+            });
         },
-        Undo(){
-            this.Task.name = this.copy.name
-            this.Task.description = this.copy.description
-            this.Task.deadline = this.copy.deadline
+
+        Undo(){     //This function undos the changes a user makes while editing the task
+            this.Task.name = this.copy.name;
+            this.Task.description = this.copy.description;
+            this.Task.deadline = this.copy.deadline;
             this.editMode = !this.editMode;
         }
+
     },  
     computed: {
         ...mapGetters([
-            'getIndex',
-            'getTask'
+            'getIndex',     //It allow us to return the value of VUEX store and lock or unlocks the screen depending if we are or not with the menu open 
+            'getTask'       //Gets the Task ID from VUEX store  
         ])
     },
     mounted() {
-        axios.get('http://127.0.0.1/api/v1/tasks/'+this.getTask)
-        .then(response => {
-            this.Task.name = response.data.data.name;
-            this.Task.description = response.data.data.description;
-            this.Task.deadline = response.data.data.deadline;
-            this.Task.done = response.data.data.done;
-            this.copy = response.data.data;
+        this.apiService.getSingleTask(this.getTask)
+        .then((response) => {
+            this.Task.name = response.name;                   //Sets Task.name to name from the Single Task
+            this.Task.description = response.description;     //Sets Task.description to description from the Single Task
+            this.Task.deadline = response.deadline;           //Sets Task.deadline to deadline from the Single Task
+            this.Task.done = response.done;                   //Sets Task.done to done from the Single Task
+            this.copy = response;                             //Sets a copy of the original task to variable copy
         })
     }
 }

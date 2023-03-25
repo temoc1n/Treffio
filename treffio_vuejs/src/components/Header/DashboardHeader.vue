@@ -11,7 +11,7 @@ export default {
     methods: {
         openMenu() {
           this.$store.commit('lockScreen') //changes the background to locked
-          this.$emit('openMenu')
+          this.$emit('openMenu')  //Send emission to parent component
         }
     } 
 }

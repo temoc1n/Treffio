@@ -7,6 +7,13 @@
     </div>
 </template>
 <script>
+
+/*
+
+    This component is only for the card we see in the main page
+
+*/
+
 export default {
     name: 'CardComponent',
     props: {
