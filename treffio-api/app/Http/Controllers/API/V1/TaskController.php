@@ -43,6 +43,7 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
+        // Before storing we use a resource in order to convert the data into an array
         return new TaskResource(Task::create($request->all()));
     }
 
@@ -67,6 +68,7 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
+        //It simple updates a single value in the database
         $task->update($request->all());
 
         return new TaskResource($task);
@@ -79,14 +81,14 @@ class TaskController extends Controller
     {
         $id = $task->id;            //Gets the ID assigned to the object Task
         
-        $checkTask = Task::find($id);
+        $checkTask = Task::find($id);   //Check if the task still exists
 
         if (!$checkTask)
         {
-            return "Impossible to delete task.";
+            return "Impossible to delete task.";    //If it doesn't returns impossible to delete
         } else {
-            Task::findOrFail($id)->delete();
-            return "Task Deleted!";
+            Task::findOrFail($id)->delete();    //Else it will query the task as deleted
+            return "Task Deleted!";     //Return message
         }
 
 

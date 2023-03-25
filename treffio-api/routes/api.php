@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+//Access-Control-Allow-Origin: *
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // /api/v1 -> First API version
-Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API\V1'], function() {
-    Route::apiResource('tasks', TaskController::class);
+Route::middleware(['cors'])->group(function (){     //Added Middleware CORS to evade the protection against unreliable entities
+    Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API\V1'], function() { //Adds up a prefix to the API knowing we are using the v1 or first version, this can be quickly changed if it is decided to release a new version of the api, it also allow us to keep older versions stored in the application
+        Route::apiResource('tasks', TaskController::class); //Creates a resource on the api side making multiple endpoints that allow, PUT, GET, POST, PATCH, DELETE
+    });
 });

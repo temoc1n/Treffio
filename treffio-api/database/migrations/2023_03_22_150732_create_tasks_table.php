@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->text('description')->nullable();    //adding "nullable()" allow us to send a null value to the database, giving it a default value so it does not have to allways be fulfilled
             $table->string('deadline')->nullable();
-            $table->boolean('done');
+            $table->boolean('done');       
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('tasks');      //It recreates the table
     }
 };

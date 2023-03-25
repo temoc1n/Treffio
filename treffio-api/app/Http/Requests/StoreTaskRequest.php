@@ -24,8 +24,8 @@ class StoreTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
-            'done' => ['required', Rule::in([0,1])],
+            'name' => ['required'],     //Makes the name a required field when posting
+            'done' => ['required', Rule::in([0,1])],    //Makes done a required field when posting, but only allows values 1 and 0
         ];
     }
 }
