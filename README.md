@@ -10,8 +10,10 @@
 >1. To start the API application simply clone the project and open the folder `treffio-api`
 > 
 >2. Once cloned connect the .env of the `treffio-api` folder to **your MYSQL credentials**
+>
+>3. After that run `composer install` to install all the dependecies
 > 
->3. Now inside the folder run `php artisan serve --port=80`, notice that the port can be changed depending on your needs but make sure to change the .env `VUE_APP_API_HOST` variable in the **VueJS application**
+>4. Now inside the folder run `php artisan serve --port=80`, notice that the port can be changed depending on your needs but make sure to change the .env `VUE_APP_API_HOST` variable in the **VueJS application**
 
 ### Migrations and Seeds:
 > 1. Run the *last migration* in order to setup your database with the required table, to run the migration you can simple type on your terminal:
