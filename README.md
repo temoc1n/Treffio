@@ -18,11 +18,11 @@
 ### Migrations and Seeds:
 > 1. Run the *last migration* in order to setup your database with the required table, to run the migration you can simple type on your terminal:
 > 
->   `php artisan migrate --path=/database/migrations/2023_03_22_150732_create_tasks_table.php` 
+>   `php artisan migrate:refresh --path=/database/migrations/2023_03_22_150732_create_tasks_table.php` 
 >
 > You can also run the migration with a seed by typing: (This is only optional)
 >    
->    `php artisan migrate --path=/database/migrations/2023_03_22_150732_create_tasks_table.php --seed`
+>    `php artisan migrate:refresh --path=/database/migrations/2023_03_22_150732_create_tasks_table.php --seed`
 >    
 
 ### API Documentation:
